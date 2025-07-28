@@ -1,0 +1,40 @@
+<resources>
+<style name="Theme.CoffeeParadise" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <!-- Primary brand color. -->
+    <item name="colorPrimary">@color/coffee_brown_500</item>
+    <item name="colorPrimaryVariant">@color/coffee_brown_700</item>
+    <item name="colorOnPrimary">@color/white</item>
+    <!-- Secondary brand color. -->
+    <item name="colorSecondary">@color/cream_200</item>
+    <item name="colorSecondaryVariant">@color/cream_700</item>
+    <item name="colorOnSecondary">@color/black</item>
+    <!-- Status bar color. -->
+    <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+    <!-- Customize your theme here. -->
+    <item name="android:windowBackground">@color/light_cream_background</item>
+    <item name="android:fontFamily">@font/inter</item>
+    <item name="textAppearanceHeadline6">@style/TextAppearance.CoffeeParadise.Headline6</item>
+    <item name="textAppearanceBody1">@style/TextAppearance.CoffeeParadise.Body1</item>
+</style>
+
+<style name="Theme.CoffeeParadise.NoActionBar">
+    <item name="windowActionBar">false</item>
+    <item name="windowNoTitle">true</item>
+</style>
+
+<!-- Custom Text Appearances -->
+<style name="TextAppearance.CoffeeParadise.Headline6" parent="TextAppearance.MaterialComponents.Headline6">
+    <item name="android:fontFamily">@font/inter_bold</item>
+    <item name="fontFamily">@font/inter_bold</item>
+    <item name="android:textSize">24sp</item>
+    <item name="android:textColor">@color/dark_gray</item>
+</style>
+
+<style name="TextAppearance.CoffeeParadise.Body1" parent="TextAppearance.MaterialComponents.Body1">
+    <item name="android:fontFamily">@font/inter</item>
+    <item name="fontFamily">@font/inter</item>
+    <item name="android:textSize">16sp</item>
+    <item name="android:textColor">@color/gray_700</item>
+</style>
+
+</resources>

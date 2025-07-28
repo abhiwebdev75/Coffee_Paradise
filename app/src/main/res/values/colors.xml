@@ -1,0 +1,14 @@
+<resources>
+    <color name="coffee_brown_500">#6F4E37</color>
+    <color name="coffee_brown_700">#8B4513</color>
+    <color name="cream_200">#F3EADF</color>
+    <color name="cream_700">#D2B48C</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="light_cream_background">#F3EADF</color>
+    <color name="dark_gray">#333333</color>
+    <color name="gray_700">#4A4A4A</color>
+    <color name="light_gray_border">#D1D5DB</color>
+    <color name="input_background">#F9FAFB</color>
+    <color name="red_error">#FF0000</color>
+</resources>
