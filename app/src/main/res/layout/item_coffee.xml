@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="8dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp"
+    app:strokeColor="@color/material_dynamic_neutral90"
+    app:strokeWidth="1dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/imageCoffee"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:src="@drawable/coffee_espresso"
+            android:contentDescription="Coffee Image" />
+
+        <TextView
+            android:id="@+id/textCoffeeName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="@android:color/black"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toEndOf="@+id/imageCoffee"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Espresso" />
+
+        <TextView
+            android:id="@+id/textIngredientsLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ingredients:"
+            android:textStyle="italic"
+            android:layout_marginTop="4dp"
+            app:layout_constraintStart_toStartOf="@+id/textCoffeeName"
+            app:layout_constraintTop_toBottomOf="@+id/textCoffeeName" />
+
+        <TextView
+            android:id="@+id/textIngredients"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            app:layout_constraintStart_toEndOf="@+id/textIngredientsLabel"
+            app:layout_constraintTop_toTopOf="@+id/textIngredientsLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Coffee beans, water" />
+
+        <TextView
+            android:id="@+id/textPriceLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Price:"
+            android:textStyle="italic"
+            android:layout_marginTop="4dp"
+            app:layout_constraintStart_toStartOf="@+id/textCoffeeName"
+            app:layout_constraintTop_toBottomOf="@+id/textIngredients" />
+
+        <TextView
+            android:id="@+id/textPrice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="@android:color/holo_green_dark"
+            app:layout_constraintStart_toEndOf="@+id/textPriceLabel"
+            app:layout_constraintTop_toTopOf="@+id/textPriceLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Rs. 350" />
+
+        <LinearLayout
+            android:id="@+id/quantity_controls_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textPrice"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <Button
+                android:id="@+id/buttonMinus"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:text="-"
+                android:textSize="20sp"
+                android:backgroundTint="@color/material_dynamic_primary40"
+                android:textColor="@android:color/white"
+                android:padding="0dp"
+                android:minWidth="0dp"
+                android:minHeight="0dp"/>
+
+            <TextView
+                android:id="@+id/textQuantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:layout_marginHorizontal="8dp"
+                tools:text="1" />
+
+            <Button
+                android:id="@+id/buttonPlus"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:text="+"
+                android:textSize="20sp"
+                android:backgroundTint="@color/material_dynamic_primary40"
+                android:textColor="@android:color/white"
+                android:padding="0dp"
+                android:minWidth="0dp"
+                android:minHeight="0dp"/>
+
+            <Button
+                android:id="@+id/buttonAddToCart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add"
+                android:layout_marginStart="16dp"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

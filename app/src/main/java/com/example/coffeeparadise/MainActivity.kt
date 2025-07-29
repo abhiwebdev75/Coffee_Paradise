@@ -1,105 +1,59 @@
+// MainActivity.kt
 package com.example.coffeeparadise
 
 import android.os.Bundle
-import android.util.Patterns
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.example.coffeeparadise.adapter.CoffeeAdapter
+import com.example.coffeeparadise.data.Coffee
 import com.example.coffeeparadise.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    // Declare the binding object
     private lateinit var binding: ActivityMainBinding
+    private lateinit var coffeeAdapter: CoffeeAdapter
+    private val coffeeItems = mutableListOf<Coffee>() // Your list of coffee items
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // Inflate the layout using view binding
         binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root) // Set the content view from the binding object
+        setContentView(binding.root)
 
-        // No need for separate lateinit vars for each view like usernameEditText, emailEditText etc.
-        // You can directly access them via the 'binding' object.
-        // For example:
-        // binding.usernameEditText
-        // binding.emailEditText
-        // binding.signupButton
-        // binding.usernameTextInputLayout
+        setSupportActionBar(binding.toolbar)
 
-        binding.signupButton.setOnClickListener {
-            validateAndSignUp()
-        }
-
-        // Example of setting a click listener on the "Log In" text
-        binding.loginText.setOnClickListener {
-            Toast.makeText(this, "Navigating to Login page...", Toast.LENGTH_SHORT).show()
-            // In a real app, you would navigate to your login activity here
-            // val intent = Intent(this, LoginActivity::class.java)
-            // startActivity(intent)
-        }
+        setupCoffeeList()
     }
 
-    private fun validateAndSignUp() {
-        // Access views and their text using the binding object directly
-        val username = binding.usernameEditText.text.toString().trim()
-        val email = binding.emailEditText.text.toString().trim()
-        val password = binding.passwordEditText.text.toString()
-        val confirmPassword = binding.confirmPasswordEditText.text.toString()
+    private fun setupCoffeeList() {
+        // Populate with some dummy data including image resource IDs
+        // IMPORTANT: Make sure these drawables exist in your res/drawable/ folder!
+        coffeeItems.add(Coffee("1", "Espresso", "Finely ground coffee, hot water", 350, R.drawable.coffee_espresso))
+        coffeeItems.add(Coffee("2", "Latte", "Espresso, steamed milk, thin layer of foam", 475, R.drawable.coffee_latte))
+        coffeeItems.add(Coffee("3", "Cappuccino", "Espresso, steamed milk, thick layer of foam", 490, R.drawable.coffee_cappuccino))
+        coffeeItems.add(Coffee("4", "Americano", "Espresso, hot water", 380, R.drawable.coffee_americano))
+        coffeeItems.add(Coffee("5", "Macchiato", "Espresso, dash of foamed milk", 420, R.drawable.coffee_machita))
+        coffeeItems.add(Coffee("6", "Mocha", "Espresso, chocolate syrup, steamed milk, whipped cream", 550, R.drawable.coffee_mocha))
+        coffeeItems.add(Coffee("7", "Cold Brew", "Cold water, coarsely ground coffee, long steeping time", 400, R.drawable.coffee_coldbrew))
+        coffeeItems.add(Coffee("8", "Flat White", "Espresso, velvety microfoam milk", 480, R.drawable.coffee_flatwhite))
 
-        // Clear previous errors
-        binding.usernameTextInputLayout.error = null
-        binding.emailTextInputLayout.error = null
-        binding.passwordTextInputLayout.error = null
-        binding.confirmPasswordTextInputLayout.error = null
 
-        var isValid = true
+        coffeeAdapter = CoffeeAdapter(this, coffeeItems)
 
-        if (username.isEmpty()) {
-            binding.usernameTextInputLayout.error = "Username cannot be empty"
-            isValid = false
+        // Set the callback for add to cart button clicks
+        coffeeAdapter.onAddToCartClickListener = { coffee, quantity ->
+            Toast.makeText(this, "Added $quantity x ${coffee.name} to cart!", Toast.LENGTH_SHORT).show()
+            // Here, you would implement your actual cart logic
+            // E.g., add to a global MutableList<CartItem>, update a database, etc.
+            // Example: YourCartManager.addItem(coffee, quantity)
         }
 
-        if (email.isEmpty()) {
-            binding.emailTextInputLayout.error = "Email cannot be empty"
-            isValid = false
-        } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            binding.emailTextInputLayout.error = "Invalid email format"
-            isValid = false
-        }
+        binding.coffeeListView.adapter = coffeeAdapter
 
-        if (password.isEmpty()) {
-            binding.passwordTextInputLayout.error = "Password cannot be empty"
-            isValid = false
-        } else if (password.length < 6) {
-            binding.passwordTextInputLayout.error = "Password must be at least 6 characters long"
-            isValid = false
-        }
-
-        if (confirmPassword.isEmpty()) {
-            binding.confirmPasswordTextInputLayout.error = "Confirm password cannot be empty"
-            isValid = false
-        } else if (password != confirmPassword) {
-            binding.confirmPasswordTextInputLayout.error = "Passwords do not match"
-            isValid = false
-        }
-
-        if (isValid) {
-            // Simulate successful signup
-            Toast.makeText(this, "Sign up successful! Welcome to Coffee Paradise!", Toast.LENGTH_LONG).show()
-            // In a real app, you would send this data to your backend for user registration
-            // For example:
-            // val user = User(username, email, password)
-            // authService.registerUser(user)
-
-            // Optionally clear the fields after successful signup
-            binding.usernameEditText.text?.clear()
-            binding.emailEditText.text?.clear()
-            binding.passwordEditText.text?.clear()
-            binding.confirmPasswordEditText.text?.clear()
-        } else {
-            Toast.makeText(this, "Please correct the errors and try again.", Toast.LENGTH_SHORT).show()
+        // Optional: You might still want a click listener for the whole item, separate from the button
+        binding.coffeeListView.setOnItemClickListener { parent, view, position, id ->
+            val clickedCoffee = coffeeItems[position]
+            // This toast now reflects the *initial* quantity if not updated via buttons
+            Toast.makeText(this, "Clicked on ${clickedCoffee.name} (Current Qty: ${clickedCoffee.quantity})", Toast.LENGTH_SHORT).show()
         }
     }
 }
