@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter
 import android.widget.Toast // For demonstration, you might move this to MainActivity
 import com.example.coffeeparadise.data.Coffee
 import com.example.coffeeparadise.databinding.ItemCoffeeBinding // Import the generated binding class!
+import java.util.Locale
 
 class CoffeeAdapter(context: Context, private val coffeeList: List<Coffee>) :
     ArrayAdapter<Coffee>(context, 0, coffeeList) {
@@ -38,7 +39,7 @@ class CoffeeAdapter(context: Context, private val coffeeList: List<Coffee>) :
         binding.imageCoffee.setImageResource(currentCoffee.imageResId)
         binding.textCoffeeName.text = currentCoffee.name
         binding.textIngredients.text = currentCoffee.ingredients
-        binding.textPrice.text = String.format("$%.2f", currentCoffee.price)
+        binding.textPrice.text = String.format(Locale("en","IN"),"%.2f", currentCoffee.price)
         binding.textQuantity.text = currentCoffee.quantity.toString()
 
         // Set up click listeners for quantity controls and Add button

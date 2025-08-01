@@ -5,7 +5,7 @@ data class Coffee(
     val id: String,
     val name: String,
     val ingredients: String,
-    val price: Int,
+    val price: Double,
     val imageResId: Int,
     var quantity: Int = 1
 )
