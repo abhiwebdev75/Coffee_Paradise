@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "483813839907",
+    "project_id": "coffee-paradise-f3d58",
+    "storage_bucket": "coffee-paradise-f3d58.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:483813839907:android:10a97dc5300ad391820d96",
+        "android_client_info": {
+          "package_name": "com.example.coffeeparadise"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxLf9df8PAfa3CczgwFvKGIP1OYf_iOL0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
